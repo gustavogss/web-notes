@@ -1,4 +1,5 @@
 import logo from '../../assets/logo.svg'
+import { AddNote } from '../../components/AddNote'
 import { Card } from '../../components/Card'
 
 export function Home() {
@@ -14,15 +15,10 @@ export function Home() {
             </form>
             <div className="h-px bg-slate-700" />
             <div className="grid grid-cols-3 auto-rows-[250px] gap-6">
-                <div className="bg-slate-600 rounded-md p-5 space-y-3">
-                    <span className='text-sm font-medium text-slate-200'>Adicionar nota</span>
-                    <p className='text-sm leading-5 text-slate-400'>Grave uma nota em áudio que será convertida para texto autmáticamente</p>
-                </div>
-
-               <Card title='Há 2 dias' description='Blabla bla'/>
-               <Card title='Há 3 dias' description='Blabla bla'/>
-               <Card title='Há 5 dias' description='Blabla bla'/>
-
+                <AddNote title='Adicionar Nota' description='Grave uma nota em áudio que será convertida para texto autmáticamente' />
+                <Card title='Há 2 dias' description='Blabla bla' />
+                <Card title='Há 3 dias' description='Blabla bla' />
+                <Card title='Há 5 dias' description='Blabla bla' />
             </div>
         </div>
     )
