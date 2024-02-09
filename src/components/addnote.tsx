@@ -1,4 +1,4 @@
-interface AddNodeProps{
+type AddNodeProps = {
     title: string,
     description: string
 }
