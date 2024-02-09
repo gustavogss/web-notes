@@ -1,6 +1,6 @@
-import logo from '../../assets/logo.svg'
-import { AddNote } from '../../components/AddNote'
-import { Card } from '../../components/Card'
+import logo from '../assets/logo.svg'
+import { AddNote } from '../components/addnote'
+import { Card } from '../components/card'
 
 export function Home() {
     return (
@@ -16,9 +16,9 @@ export function Home() {
             <div className="h-px bg-slate-700" />
             <div className="grid grid-cols-3 auto-rows-[250px] gap-6">
                 <AddNote title='Adicionar Nota' description='Grave uma nota em áudio que será convertida para texto autmáticamente' />
-                <Card title='Há 2 dias' description='Blabla bla' />
-                <Card title='Há 3 dias' description='Blabla bla' />
-                <Card title='Há 5 dias' description='Blabla bla' />
+                <Card date= {new Date()} content='Blabla bla' />
+                <Card date={new Date()}  content='Blabla bla' />
+                <Card date ={new Date()}  content='Blabla bla' />
             </div>
         </div>
     )
