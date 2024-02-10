@@ -1,8 +1,9 @@
-import logo from '../assets/logo.svg'
-import { AddNote } from '../components/addnote'
-import { Card } from '../components/card'
+import logo from './assets/logo.svg'
+import { AddNote } from './components/addnote'
 
-export function Home() {
+import { Card } from './components/card'
+
+export function App() {
     return (
         <div className='mx-auto max-w-6xl my-12 space-y-6'>
             <img src={logo} alt='logo Notes Web' />

@@ -1,6 +1,5 @@
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Button } from "./button";
 
 type ModalProps = {
   date: Date;
@@ -8,6 +7,8 @@ type ModalProps = {
 };
 
 export function Modal({ date, content }: ModalProps) {
+    const TAG = '<span className="text-red-400 group-hover:underline">apagar sua nota</span>';
+    
   return (
     <>   
       <div className="flex flex-1 flex-col gap-3 p-5">
@@ -16,7 +17,14 @@ export function Modal({ date, content }: ModalProps) {
         </span>
         <p className="text-sm leading-5 text-slate-400">{content}</p>
       </div>
-      <Button />
+      <button
+        type="button"
+        className="w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none group"
+        font-medium
+      >
+        Deseja <span className="text-red-400 group-hover:underline">apagar sua nota</span> ?
+      </button>
+    
     </>
   );
 }
