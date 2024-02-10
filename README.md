@@ -10,5 +10,6 @@
 - [Radix](https://www.radix-ui.com/themes/docs/overview/getting-started)
 - [Date FNS](https://date-fns.org/docs/Getting-Started)
 - [Lucide React](https://lucide.dev/guide/packages/lucide-react)
+- [Sonner](https://sonner.emilkowal.ski/)
 
 # Aplication :computer:  
