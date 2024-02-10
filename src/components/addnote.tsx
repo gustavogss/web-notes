@@ -7,12 +7,13 @@ import {toast} from 'sonner';
 type AddNodeProps = {
     title: string,
     description: string,
+    onNoteCreated: (content:string) => void
 }
 
 
-export function AddNote({ title, description }: AddNodeProps) {
+export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
     const [shouldOnBoard, setShouldOnBoard] = useState(true);
-    const [_content, setContent] = useState('')
+    const [content, setContent] = useState('')
 
     function handlerEditorOnBoard() {
         setShouldOnBoard(false);
@@ -28,6 +29,9 @@ export function AddNote({ title, description }: AddNodeProps) {
 
     function handleSaveNote(event: FormEvent) {
         event.preventDefault()
+        onNoteCreated(content)
+        setContent('')
+        setShouldOnBoard(true);
         toast.success('Nota criada com sucesso!')
     }
 
@@ -35,7 +39,7 @@ export function AddNote({ title, description }: AddNodeProps) {
         <Dialog.Root>
             <Dialog.Trigger className="bg-slate-600 rounded-md p-5 gap-3 flex flex-col tex-left hover:ring-2 hover:ring-slate-600 focus-visible:ring-2 focus-visible:ring-lime-400 outline-none">
                 <span className='text-sm font-medium text-slate-200'>{title}</span>
-                <p className='text-sm leading-5 text-slate-400'>{description}</p>
+                <p className='text-sm leading-5 text-slate-400 flex flex-col text-left'>{description}</p>
             </Dialog.Trigger>
             <Dialog.Portal>
                 <Dialog.Overlay className="inset-0 bg-black/50 fixed" />
@@ -60,6 +64,7 @@ export function AddNote({ title, description }: AddNodeProps) {
                                     <textarea autoFocus
                                         className="text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none"
                                         onChange={handleContentChange}
+                                        value={content}
                                     />
                                 )
                             }

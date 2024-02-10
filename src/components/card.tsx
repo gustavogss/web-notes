@@ -5,6 +5,7 @@ import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
 type CardProps  = {
+  id: string;
   date: Date;
   content: string;
 }
