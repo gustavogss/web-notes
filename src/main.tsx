@@ -7,6 +7,6 @@ import { Toaster } from "sonner"
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />
-    <Toaster richColors theme='system'/>
+    <Toaster richColors theme='system' />
   </React.StrictMode>,
 )

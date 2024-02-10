@@ -2,12 +2,12 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 import { Button } from "./button"
 import { ChangeEvent, FormEvent, useState } from "react"
-import {toast} from 'sonner';
+import { toast } from 'sonner';
 
 type AddNodeProps = {
     title: string,
     description: string,
-    onNoteCreated: (content:string) => void
+    onNoteCreated: (content: string) => void
 }
 
 
