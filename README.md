@@ -1,6 +1,6 @@
 # Web Notes
 
-- Aplicação web para cadastrar notas ou lembretes
+- Aplicação web para criar notas de texto, e audio em tempo real
 
 ## Stacks :robot:
 
