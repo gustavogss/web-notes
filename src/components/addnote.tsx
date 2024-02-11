@@ -1,6 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
-import { Button } from "./button"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from 'sonner';
 
@@ -14,6 +13,7 @@ type AddNodeProps = {
 export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
     const [shouldOnBoard, setShouldOnBoard] = useState(true);
     const [content, setContent] = useState('')
+    const [isRecording, setIsRecording] = useState(false);
 
     function handlerEditorOnBoard() {
         setShouldOnBoard(false);
@@ -29,10 +29,23 @@ export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
 
     function handleSaveNote(event: FormEvent) {
         event.preventDefault()
+        if (content === "") {
+            return;
+          }
         onNoteCreated(content)
         setContent('')
         setShouldOnBoard(true);
+
         toast.success('Nota criada com sucesso!')
+    }
+
+    function handleStartRecord() {
+        setIsRecording(true);
+        setShouldOnBoard(false);
+    }
+
+    function handleStopRecord() {
+        setIsRecording(false);
     }
 
     return (
@@ -48,16 +61,18 @@ export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
                     <Dialog.Close className="absolute right-0 top-0 p-3 text-slate-400 bg-slate-800 hover:text-slate-100 rounded-bl-3xl ">
                         <X className="size-5" />
                     </Dialog.Close>
-                    <form onSubmit={handleSaveNote} className="flex-1 flex flex-col">
+                    <form className="flex-1 flex flex-col">
                         <div className="flex flex-1 flex-col gap-3 p-5">
                             <span className="text-sm font-medium text-slate-400">
                                 Adicionar nota
                             </span>
                             {shouldOnBoard ? (
                                 <p className="text-sm leading-5 text-slate-400">
-                                    Começe <button className="text-lime-400 hover:underline">gravando uma nota </button> em áudio ou se preferir utilize <button
-                                        onClick={handlerEditorOnBoard}
-                                        className="text-lime-400 hover:underline">apenas texto</button>
+                                    Começe <button
+                                        className="text-lime-400 hover:underline"
+                                        onClick={handleStartRecord}>gravando uma nota </button> em áudio ou se preferir utilize <button
+                                            onClick={handlerEditorOnBoard}
+                                            className="text-lime-400 hover:underline">apenas texto</button>
                                 </p>
                             ) :
                                 (
@@ -69,7 +84,26 @@ export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
                                 )
                             }
                         </div>
-                        <Button description="Salvar nota" />
+                        {isRecording ? (
+                            <button
+                                type="button"
+                                onClick={handleStopRecord}
+                                className="w-full bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:text-slate-100"
+
+                            >
+                                Gravando... (Clique para interromper)
+                            </button>
+                        ) :
+
+                            <button
+                                type="button"
+                                onClick={handleSaveNote}
+                                className="w-full bg-lime-400 py-4 text-center text-sm text-lime-950 outline-none font-medium hover:bg-lime-500"
+                            >
+                                Salvar nota
+                            </button>
+                        }
+
                     </form>
                 </Dialog.Content>
             </Dialog.Portal>
