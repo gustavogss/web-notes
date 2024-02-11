@@ -11,5 +11,16 @@
 - [Date FNS](https://date-fns.org/docs/Getting-Started)
 - [Lucide React](https://lucide.dev/guide/packages/lucide-react)
 - [Sonner](https://sonner.emilkowal.ski/)
+- [DOM SPEECH RECOGNITION](https://www.npmjs.com/package/@types/dom-speech-recognition)
+
+## Alert :
+- Essa API de gravação de voz não é suportada nos navegagores:
+  
+    ```
+    Firefox
+    IE
+    Edge
+    Opera
+    ```
 
 # Aplication :computer:  

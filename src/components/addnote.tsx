@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog"
-import { X } from "lucide-react"
+import { Dice1, X } from "lucide-react"
 import { ChangeEvent, FormEvent, useState } from "react"
 import { toast } from 'sonner';
 
@@ -42,6 +42,15 @@ export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
     function handleStartRecord() {
         setIsRecording(true);
         setShouldOnBoard(false);
+
+        const isSpeechRecognitionAPIAvailable = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window
+
+        if(!isSpeechRecognitionAPIAvailable){
+            alert('Infelizmente seu navegador não suporta a API de gravação')
+            return
+        }
+
+        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition
     }
 
     function handleStopRecord() {
@@ -88,9 +97,9 @@ export function AddNote({ title, description, onNoteCreated }: AddNodeProps) {
                             <button
                                 type="button"
                                 onClick={handleStopRecord}
-                                className="w-full bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:text-slate-100"
-
+                                className="w-full flex items-center justify-center gap-2 animate-pulse bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:text-slate-100"
                             >
+                                <div className="size-3 rounded-full bg-red-500"/>
                                 Gravando... (Clique para interromper)
                             </button>
                         ) :
